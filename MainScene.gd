@@ -46,23 +46,23 @@ func _process(delta):
 		timeSpawn = 0
 		
 #	print($MeshSpawn.transform.origin.x)
-	if $MeshSpawn.transform.origin.x >= 15:
+	if $MeshSpawn.transform.origin.x >= 30:
 #		print("plus")
 		spawnSpeed *= -1
-	if $MeshSpawn.transform.origin.x <= -15:
+	if $MeshSpawn.transform.origin.x <= -30:
 #		print("minus")
 		spawnSpeed *= -1
 	$VContianer/HBoxContainer/hitNumber.set_text(str(Global.hitBall))
 
 func _input(event):
-#	print("cam_orig:",camera.project_ray_origin(event.position))
-#	print("cam_nm  :",camera.project_ray_normal(event.position))
-#	print("to :",to)
 	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT and event.pressed:
 		var from = camera.project_ray_origin(event.position)
 		var to = from + camera.project_ray_normal(event.position) * 10
 		ballrc = ballr.instance()
 		ballrc.global_transform.origin = to
+#		print("cam_orig:",camera.project_ray_origin(event.position))
+#		print("cam_nm  :",camera.project_ray_normal(event.position))
+#		print("to :",to)
 #		balli.set_name("ballc")
 		self.add_child(ballrc)
 		clicks+=1
