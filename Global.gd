@@ -1,6 +1,7 @@
 extends Node
 
 var hitBall = 0
+var can_shoot = false
 #func _ready():
 #	print(SilentWolf.config)
 func loadScene(path):
