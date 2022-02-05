@@ -12,10 +12,8 @@ func _physics_process(delta):
 	if qf >= 5:
 		queue_free()
 
-#func _process(delta):
-#	$Plane.rotate_y(delta)
-
 func _on_GodotToon1_body_entered(body):
 	if body is RigidBody:
 		self.gravity_scale = -1
+		$CPUParticles.show()
 
