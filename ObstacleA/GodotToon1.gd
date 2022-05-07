@@ -13,7 +13,7 @@ func _physics_process(delta):
 		queue_free()
 
 func _on_GodotToon1_body_entered(body):
-	if body is RigidBody:
+	if body.is_in_group("ShootBall"):
 		self.gravity_scale = -1
 		$CPUParticles.show()
 

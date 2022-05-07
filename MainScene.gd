@@ -20,10 +20,10 @@ func _ready():
 #	SilentWolf.Scores.persist_score("abczezeze",85,"shoot-only-gdsc")
 #	SilentWolf.Scores.persist_score("zzzddd",50,"shoot-only-gdsc")
 #	SilentWolf.Scores.persist_score("bczze",35,"shoot-only-gdsc")
-#	SilentWolf.Scores.persist_score("cze",21,"shoot-only-gdsc")
+#	SilentWolf.Scores.persist_score("cze",101,"shoot-only-gdsc")
 
-#	yield(SilentWolf.Scores.get_high_scores(), "sw_scores_received")
-#	print("All scores: " + str(SilentWolf.Scores.scores))
+	yield(SilentWolf.Scores.get_high_scores(), "sw_scores_received")
+	print("All scores: " + str(SilentWolf.Scores.scores))
 #	print(SilentWolf.Scores.scores[0].player_name)
 #	print(SilentWolf.Scores.scores)
 
@@ -68,16 +68,17 @@ func _physics_process(delta):
 		$Shooting.play()
 	
 	var direction: Vector2
-#	direction.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
-#	direction.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
-	if Input.is_action_pressed("ui_right"):
-		direction.x += .51
-	if Input.is_action_pressed("ui_left"):
-		direction.x -= .51
-	if Input.is_action_pressed("ui_up"):
-		direction.y -= .51
-	if Input.is_action_pressed("ui_down"):
-		direction.y += .51
+	direction.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
+	direction.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
+	
+#	if Input.is_action_pressed("ui_right"):
+#		direction.x += .51
+#	if Input.is_action_pressed("ui_left"):
+#		direction.x -= .51
+#	if Input.is_action_pressed("ui_up"):
+#		direction.y -= .51
+#	if Input.is_action_pressed("ui_down"):
+#		direction.y += .51
 
 	if abs(direction.x) == 1 and abs(direction.y) == 1:
 		direction = direction.normalized()
@@ -86,3 +87,4 @@ func _physics_process(delta):
 
 	if movement:
 		get_viewport().warp_mouse(mouse_pos+movement)
+		
